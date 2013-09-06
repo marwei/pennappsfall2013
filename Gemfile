@@ -22,11 +22,30 @@ gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'jquery-ui-rails'
+
+# fake user data
+gem 'faker', '~> 1.1.2'
+
+# in place editing
+gem 'best_in_place'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# awesome devise
+gem 'devise'
+
+# awesome simple-form
+gem 'simple_form'
+
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
