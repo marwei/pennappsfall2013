@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.masonry.min.js
 //= require jquery.blockUI
 //= require turbolinks
 //= require twitter/bootstrap

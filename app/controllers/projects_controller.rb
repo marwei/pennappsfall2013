@@ -34,7 +34,14 @@ class ProjectsController < ApplicationController
   def update
   end
 
+  def show
+    @project = Project.find_by_id(params[:id])
+  end
+
   def destroy
+    @project = current_user.ownerships.find_by_id(params[:id])
+    @project.destroy
+    redirect_to root_url
   end
 
   private
