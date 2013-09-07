@@ -8,11 +8,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      format.html
-      format.js
-    end
-
     @project = current_user.ownerships.build(app_params)
 
     if @project.save
