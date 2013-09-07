@@ -15,7 +15,7 @@ html, body {
 // @import 'twitter/bootstrap-responsive';
 
 
-ul {
+li {
 	list-style-type: none;
 	margin: 0;
 }
@@ -155,5 +155,14 @@ ul {
 
 //////////////
 .card {
-	background: rgba(0,0,0,0.2);
+	margin: 5px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4em;
+  float: left;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #444;
+  width: 215px;
 }

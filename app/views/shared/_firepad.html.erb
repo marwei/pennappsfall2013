@@ -1,0 +1,20 @@
+<div class="row-fluid">
+	<div class="span8">
+		<div class="row">
+			<div class="span2 lightblue">
+				<input type="text" class='span2 typeahead' autocomplete="off" data-items="5">
+				<a href="#" class="start">start</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="firepad"></div>
+
+<script>
+	$(".start").click(function(){
+	$modename = $(".typeahead").val();
+	});
+	var firepadRef = new Firebase('https://nanddalal.firebaseio.com/firepads/1337');
+	var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true, lineNumbers: true, mode: $modename });
+	var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, { richTextShortcuts: false, richTextToolbar: false });
+</script>

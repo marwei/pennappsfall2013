@@ -29,9 +29,28 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = current_user.ownerships.find_by_id(params[:id])
   end
 
   def update
+    @project = current_user.ownerships.find_by_id(params[:id])
+    if @project.update_attributes(app_params)
+      respond_to do |format|
+        format.html {
+          flash[:success] = "Project Updated!"
+          redirect_to root_url
+        }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html {
+          flash[:error] = "Update Unsuccessful :("
+          render 'edit'
+        }
+        format.js
+      end
+    end
   end
 
   def show
@@ -47,6 +66,6 @@ class ProjectsController < ApplicationController
   private
   
   def app_params
-    params.require(:project).permit(:title, :description, :active, :updated_at, :created_at)
+    params.require(:project).permit(:name, :description, :size, :active, :updated_at, :created_at)
   end
 end
