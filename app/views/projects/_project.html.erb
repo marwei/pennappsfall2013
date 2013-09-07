@@ -1,0 +1,10 @@
+<li>
+	<div class="result_item">
+		<p><strong><%= project.title %></strong></p>
+		<p>description: <%= truncate(project.description, length: 140) %></p>
+		<p>active: <%= project.active %></p>
+		<p>matched: <%= project.matched %></p>
+		<p><%= link_to "edit", edit_project_path(project) %></p>
+		<p><%= link_to 'destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+	</div>
+</li>
