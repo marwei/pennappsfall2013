@@ -17,3 +17,6 @@
 
 # Ignore my rvmrc.. mine is private
 *.rvmrc
+
+# Ignore redis dumps
+*.rdb
