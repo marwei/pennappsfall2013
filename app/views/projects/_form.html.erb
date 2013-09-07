@@ -1,6 +1,7 @@
 <%= simple_form_for(@project) do |f| %>
-	<%= f.input :title %>
+	<%= f.input :name %>
 	<%= f.input :description %>
-	<%= f.input :active %>
+	<%= f.input :size %>
+	<%= f.input :is_active %>
 	<%= f.button :submit %>
 <% end %>

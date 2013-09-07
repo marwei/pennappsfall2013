@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def new
-    @project = current_user.projects.build
+    @project = current_user.ownerships.build
     respond_to do |format|
       format.html
       format.js
@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
       format.js
     end
 
-    @project = current_user.projects.build(app_params)
+    @project = current_user.ownerships.build(app_params)
 
     if @project.save
       respond_to do |format|
@@ -27,7 +27,6 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         format.html { 
           render 'new'
-          return false
         }
         format.js   
       end
