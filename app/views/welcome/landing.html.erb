@@ -1,0 +1,41 @@
+<% provide(:title, "Welcome") %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= full_title(yield(:title)) %></title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<%= favicon_link_tag '/favicon.ico' %>
+
+<!-- 	<link href='http://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Alegreya:900' rel='stylesheet' type='text/css'> -->
+</head>
+
+<body>
+	<div id="landing">
+		<% if alert %>
+			<p class="alert alert-error"><%= alert %></p>
+		<% end %>
+		
+		<div id="title">
+			<p id="alpha"> Alpha </p>
+			<p id="hackmatch"> HACKMATCH </p>
+			<p id="subtitle"> Connect with the hackers around you. </p>
+			<p id= "sign">	
+				<%= link_to "Login", new_user_session_path, id: 'link-login' %>
+				<%= link_to "Sign Up", new_user_registration_path, :id => 'link-signup' %>
+			</p>
+		</div>	
+	</div>
+
+	<div class="footer">
+		<%= render 'layouts/footer' %>
+	</div>
+
+</body>
+</html>
+
+
