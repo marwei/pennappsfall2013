@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
     def index
   	if signed_in?
+      
     else
       render 'landing', layout: false
       # # this part renders show good list
