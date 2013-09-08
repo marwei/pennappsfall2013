@@ -18,6 +18,8 @@
 //= require turbolinks
 //= require twitter/bootstrap
 //= require typeahead
+//= require chosen.jquery
+
 //= require codemirror
 //= require codemirror/modes/ruby
 //= require codemirror/modes/apl

@@ -1,7 +1,27 @@
-<%= simple_form_for(@project) do |f| %>
-	<%= f.input :name %>
-	<%= f.input :description %>
-	<%= f.input :size %>
-	<%= f.input :is_active %>
-	<%= f.button :submit %>
-<% end %>
+<div style="width:600px; margin:auto;">
+
+	<%= form_for @project, class: "form-horizontal" do |f| %>
+		<div class="form-group">
+	    <%= f.label :name, class: "col-lg-2 control-label" %>
+	    <div class="col-lg-10"><%= f.text_field :name, :autofocus => true, class: "form-control" %></div>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.label :description, class: "col-lg-2 control-label" %>
+	    <div class="col-lg-10"><%= f.text_area :description, class: "form-control" %></div>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.label :size, class: "col-lg-2 control-label" %>
+	    <div class="col-lg-10"><%= f.text_field :size, class: "form-control" %></div>
+	  </div>
+
+	  <div class="form-group">
+	    <div class="col-lg-offset-2 col-lg-10">
+	      <%= f.submit "Submit", class: "btn btn-default" %>
+	    </div>
+	  </div>
+
+	<% end %>
+
+</div>

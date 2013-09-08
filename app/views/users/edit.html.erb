@@ -1,0 +1,66 @@
+<div style="width:600px; margin:auto;">
+	<%= form_for current_user, class: "well form-horizontal" do |f| %>
+	<div class="form-group">
+    <%= f.label :school, class: "col-lg-2 control-label" %>
+    <div class="col-lg-10"><%= f.text_field :school, :autofocus => true, class: "form-control" %></div>
+  </div>
+
+	<div class="form-group">
+  <%= f.label :year, class: "col-lg-2 control-label" %>
+  <div class="col-lg-10"><%= f.text_field :year, class: "form-control" %></div>
+  </div>
+
+	<div class="form-group">
+  <%= f.label :major, class: "col-lg-2 control-label" %>
+  <div class="col-lg-10"><%= f.text_field :major, class: "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :self_description, class: "col-lg-2 control-label" %>
+  <div class="col-lg-10"><%= f.text_area :self_description, class: "form-control" %></div>
+  </div>
+
+	<div class="form-group">
+		<%= f.label :skills, class: "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <select data-placeholder="Choose a Skill..." class="chosen-select form-control" id="form_field" multiple tabindex="4">
+      <% @userskills.each do |skill| %>
+        <option data-option-array-index=<%= "#{skill.id}" %> style=""><%= skill.name %></li>
+      <% end %>
+
+      <% @allskills.each do |skill| %>
+        <option class="result-selected" data-option-array-index=<%= "#{skill.id}" %> style=""><%= skill.name %></li>
+      <% end %>
+
+    </select>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit "Update", class: "btn btn-default" %>
+    </div>
+  </div>
+
+<% end %>
+</div>
+
+
+<script type="text/javascript">
+    var config = {
+      '.chosen-select'           : {},
+      '.chosen-select-deselect'  : {allow_single_deselect:true},
+      '.chosen-select-no-single' : {disable_search_threshold:10},
+      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chosen-select-width'     : {width:"auto"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+
+  $("#form_field").on('change', function() {
+   alert($(".search-choice-close").attr("data-option-array-index").text());
+
+  });
+  </script>
