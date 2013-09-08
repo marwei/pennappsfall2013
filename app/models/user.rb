@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
   has_many :memberships, through: :project_skill_users, foreign_key: "user_id", class_name: "Project"
   has_many :ownerships, foreign_key: "owner_id", class_name: "Project"
 
+  def add_user_skills_to_project(options = {})
+    return unless options['project_id']
+    common_skills = Project.find(options['project_id']).skills.collect(&:id) & self.skills.collect(&:id)
+    common_skills.each do |s|
+      psu = ProjectSkillUser.new(project_id: options['project_id'], skill_id: s, user_id: self.id)
+      psu.save if psu.valid?
+    end
+  end
+
 end
