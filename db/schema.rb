@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130908064922) do
+ActiveRecord::Schema.define(version: 20130908065138) do
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "message_subject"
+    t.string   "message_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "project_skill_users", force: true do |t|
     t.integer  "project_id"
