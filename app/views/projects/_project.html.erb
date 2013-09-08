@@ -3,7 +3,7 @@
 		<p><strong><%= project.name %></strong></p>
 		<p>description: <%= truncate(project.description, length: 140) %></p>
 		<p>active: <%= project.is_active %></p>
-		<p>spots: <%= project.size %></p>
+		<p>spots: <%= project.user_capacity %></p>
 		<p><%= link_to "detail...", project_path(project) %></p>
 		<p><%= link_to "edit", edit_project_path(project) %></p>
 		<p><%= link_to 'destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></p>
