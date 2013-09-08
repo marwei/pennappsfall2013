@@ -1,10 +1,12 @@
 class Users::SessionsController < Devise::SessionsController
   def new
   	@user = User.new
+    @skip_header=true
+    @skip_footer=true
     respond_to do |format|
     	format.html { super }
     	format.js
-    end      	
+    end
   end
 
   def create

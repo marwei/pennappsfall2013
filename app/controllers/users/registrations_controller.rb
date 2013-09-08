@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def new
-  	
+    @skip_header = true  	
+    @skip_footer = true
     respond_to do |format|
     	format.html { super }
     	format.js
