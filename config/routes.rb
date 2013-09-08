@@ -1,6 +1,10 @@
 Pennapps2013f::Application.routes.draw do
   devise_for :users,  controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  resources :projects
+  resources :projects do
+    member do
+      get 'subscribe'
+    end
+  end
   resources :user_skills
   resources :users
   get "welcome/index"

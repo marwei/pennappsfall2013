@@ -4,8 +4,15 @@
 		<p>description: <%= truncate(project.description, length: 140) %></p>
 		<p>active: <%= project.is_active %></p>
 		<p>spots: <%= project.user_capacity %></p>
+		<p>Skills Requirement:</p>
+		<p>
+			<% project.skills.collect(&:name).each do |x| %>
+				<%= x %>
+				<% end %>
+		</p>
 		<p><%= link_to "detail...", project_path(project) %></p>
-		<p><%= link_to "edit", edit_project_path(project) %></p>
-		<p><%= link_to 'destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		<p><%= link_to "Interested? Subscribe!", subscribe_project_path(project) %></p>
+		<span><%= link_to "edit", edit_project_path(project) %></span>
+		<span><%= link_to 'destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></span>
 	</div>
 </li>

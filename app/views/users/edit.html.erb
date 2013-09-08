@@ -23,16 +23,9 @@
 	<div class="form-group">
 		<%= f.label :skills, class: "col-lg-2 control-label" %>
     <div class="col-lg-10">
-      <select data-placeholder="Choose a Skill..." class="chosen-select form-control" id="form_field" multiple tabindex="4">
-      <% @userskills.each do |skill| %>
-        <option data-option-array-index=<%= "#{skill.id}" %> style=""><%= skill.name %></li>
+      <%= f.fields_for :skills do |s| %>
+        <%= s.text_field :name, class: "form-control"  %>
       <% end %>
-
-      <% @allskills.each do |skill| %>
-        <option class="result-selected" data-option-array-index=<%= "#{skill.id}" %> style=""><%= skill.name %></li>
-      <% end %>
-
-    </select>
     </div>
 
   </div>
@@ -60,7 +53,16 @@
     }
 
   $("#form_field").on('change', function() {
-   alert($(".search-choice-close").attr("data-option-array-index").text());
+   $ajax{
+    type: "POST",
+    url: "update_skills",
+    data: JSON.stringify({name: $("chosen-results").text()},
+    beforeSend: function(jqXHR, settings) {
+      return jqXHR.setRequestHeader("X-CSRF-Token", $("meta[name=\"csrf-token\"]").attr("content"));
+    },
+    contentType: "application/json",
+    dataType: "json"
+   };
 
   });
   </script>

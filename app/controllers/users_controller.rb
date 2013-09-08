@@ -14,6 +14,10 @@ class UsersController < ApplicationController
 
 	def update
 		@user = current_user
+		params['user']['skills']['name'].split(", ").each do |skill|
+			us = UserSkill.new(user_id: current_user.id, skill_id: Skill.find_by_name(skill).id)
+			us.save if us.valid?
+		end
 
 		if @user.update_attributes(app_params)
 			flash[:success] = "Profile Updated!"
@@ -21,6 +25,11 @@ class UsersController < ApplicationController
 		else
 			render edit_user_path
 		end
+	end
+
+	def update_skills
+		@skills = current_user.build(params[:name])
+		
 	end
 
 	def destroy

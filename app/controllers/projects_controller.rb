@@ -26,6 +26,11 @@ class ProjectsController < ApplicationController
         format.js   
       end
     end
+
+    params['project']['skills']['name'].split(", ").each do |skill|
+      ps = ProjectSkill.new(project_id: @project.id, skill_id: Skill.find_by_name(skill).id)
+      ps.save if ps.valid?
+    end
   end
 
   def edit
@@ -63,9 +68,13 @@ class ProjectsController < ApplicationController
     redirect_to root_url
   end
 
+  def subscribe
+    current_user.add_user_skills_to_project({'project_id' => params[:id]})
+    redirect_to root_url
+  end
   private
   
   def app_params
-    params.require(:project).permit(:name, :description, :size, :active, :updated_at, :created_at)
+    params.require(:project).permit(:name, :description, :size, :active, :updated_at, :created_at, skills_attributes: :name)
   end
 end
