@@ -11,22 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130908052456) do
-
-  create_table "notifications", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
-    t.string   "message"
-    t.integer  "message_received"
-    t.datetime "message_received_timestamp"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "notifications", ["created_at"], name: "index_notifications_on_created_at", using: :btree
-  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
-  add_index "notifications", ["sender_id", "receiver_id"], name: "index_notifications_on_sender_id_and_receiver_id", using: :btree
-  add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
+ActiveRecord::Schema.define(version: 20130908064922) do
 
   create_table "project_skill_users", force: true do |t|
     t.integer  "project_id"
